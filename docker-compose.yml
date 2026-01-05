@@ -1,0 +1,10 @@
+services:
+  cyber-log-app:
+    build: .
+    container_name: moj_dziennik
+    ports:
+      - "9000:8501"
+    volumes:
+      - ./data:/app/data
+      - .:/app
+    restart: always

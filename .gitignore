@@ -1,0 +1,12 @@
+# Ignoruj dane (log, bazy)
+data/
+
+# Ignoruj śmieci Pythona
+__pycache__/
+*.pyc
+
+# Ignoruj ustawienia VS code (opcjonalnie, zależy czy chcesz dzielić konfig)
+.vscode/
+
+# Ignoruj pliki systemowe Linux (na wszelki wypadek)
+.DS_Store
