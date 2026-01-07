@@ -2,14 +2,14 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Instalujemy streamlit
-RUN pip install streamlit
+# Instalujemy sterowniki systemowe dla Postgresa (wymagane w wersji slim)
+RUN apt-get update && apt-get install -y libpq-dev gcc
+
+# Instalujemy biblioteki Pythona
+RUN pip install streamlit psycopg2-binary
 
 # Kopiujemy aplikację
 COPY app.py .
-
-# Ważne: Tworzymy folder data w kontenerze, aby aplikacja się nie wywaliła
-RUN mkdir data
 
 EXPOSE 8501
 

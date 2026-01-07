@@ -10,3 +10,5 @@ __pycache__/
 
 # Ignoruj pliki systemowe Linux (na wszelki wypadek)
 .DS_Store
+
+.env

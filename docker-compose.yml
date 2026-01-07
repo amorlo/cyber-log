@@ -4,7 +4,27 @@ services:
     container_name: moj_dziennik
     ports:
       - "9000:8501"
+    depends_on:
+      - db
     volumes:
-      - ./data:/app/data
       - .:/app
-    restart: always
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+
+  # Baza danych (backend)
+  db:
+    image: postgres:15-alpine
+    container_name: cyber-postgres
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    volumes:
+    - pg_data:/var/lib/postgresql/data # Tu postgres trzyma dane
+
+  # Definicja wolumenu (żeby baza nie zniknęła po restarcie)
+volumes:
+  pg_data:
